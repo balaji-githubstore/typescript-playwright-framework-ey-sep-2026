@@ -9,8 +9,9 @@ test.describe("login ui component check", async () => {
     })
 
     test("verify header", async ({ page }) => {
-
-        //assert the header - The most popular open-source Electronic Health Record and Medical Practice Management solution.
+        await page.goto("https://demo.openemr.io/b/openemr/");
+        await expect(page.locator("xpath=//p[contains(text(),'most popular')]"))
+        .toHaveText("The most popular open-source Electronic Health Record and Medical Practice Management solution.");
     })
 
 
