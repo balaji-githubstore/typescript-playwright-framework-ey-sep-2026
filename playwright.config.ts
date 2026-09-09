@@ -12,6 +12,10 @@ import { defineConfig, devices } from '@playwright/test';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
+  /* User configuration */
+  timeout: 35000,
+  expect: { timeout: 30000 },
+
   testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -31,7 +35,7 @@ export default defineConfig({
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
 
-    baseURL:"https://demo.openemr.io/b/openemr/",
+    baseURL: "https://demo.openemr.io/b/openemr/",
     headless: false
   },
 
