@@ -3,8 +3,6 @@ import { validLoginData } from "../utils/data-source.js"
 
 test.describe("login functionality check", async () => {
 
-
-
     for (const { username, password, language, expectedValue } of validLoginData) {
 
         test(`verify valid login ${username} and ${password}`, async ({ page }) => {
@@ -20,6 +18,10 @@ test.describe("login functionality check", async () => {
     }
 
 
+    /*
+    john,john123,English (Indian),Invalid username or password
+    saul,saul123,English (Indian),Invalid username or password
+    */
 
     test("verify invalid login", async ({ page }) => {
         await page.goto("");
