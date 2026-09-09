@@ -20,4 +20,16 @@ test.describe("login ui component check", async () => {
         await expect(page.locator("xpath=//input[@id='clearPass']")).toHaveAttribute("placeholder", "Password")
     })
 
+    test("verify acknowledgments license link",async({page})=>{
+        await page.goto("");
+
+        // Expect element text should be.
+        await expect(page.locator("xpath=//a[contains(text(),'Licensing')]"))
+            .toHaveText("Acknowledgments, Licensing and Certification");
+
+        // Expect a href attribute "to contain" a substring.
+        await expect(page.locator("xpath=//a[contains(text(),'Licensing')]"))
+        .toHaveAttribute("href",/acknowledge_license_cert.html/);
+    })
+
 })
