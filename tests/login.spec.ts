@@ -23,5 +23,5 @@ test.describe("login functionality check", async () => {
         await expect(page.locator("xpath=//p[contains(text(),'Invalid')]")).toHaveText("Invalid username or password");
     })
 
-    // will start at 11:35 AM IST
+    
 })
