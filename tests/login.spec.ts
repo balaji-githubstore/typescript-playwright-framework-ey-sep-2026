@@ -14,7 +14,6 @@ test.describe("login functionality check", async () => {
             // Assert the Calendar text 
             await expect(page.locator("xpath=//span[text()='Calendar']")).toHaveText(expectedValue);
         })
-
     }
 
 
