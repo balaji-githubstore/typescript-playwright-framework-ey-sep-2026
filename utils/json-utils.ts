@@ -7,5 +7,3 @@ export class JsonUtils {
         return jsonObj[key]
     }
 }
-
-
