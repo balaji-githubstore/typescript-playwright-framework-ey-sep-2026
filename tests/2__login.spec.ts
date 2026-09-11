@@ -1,5 +1,8 @@
 import { test, expect } from "@playwright/test"
 import { validLoginData, invalidLoginData } from "../utils/data-source.js"
+import { LoginPage } from "../pages/login-page.js"
+import { CalendarPage } from "../pages/calendar-page.js"
+import { log } from "node:console"
 
 test.describe("login functionality check", async () => {
 
@@ -7,12 +10,14 @@ test.describe("login functionality check", async () => {
 
         test(`verify valid login ${username} and ${password}`, async ({ page }) => {
             await page.goto("");
-            await page.locator("xpath=//input[@id='authUser']").fill(username);
-            await page.locator("xpath=//input[@id='clearPass']").fill(password);
-            await page.locator("xpath=//select[@name='languageChoice']").selectOption({ label: language });
-            await page.locator("xpath=//button[@id='login-button']").click();
-            // Assert the Calendar text 
-            await expect(page.locator("xpath=//span[text()='Calendar']")).toHaveText(expectedValue);
+            const loginPage = new LoginPage(page);
+            loginPage.enterUsername(username);
+            loginPage.enterPassword(password);
+            loginPage.selectLanguage(language);
+            loginPage.clickLogin();
+
+            const calendarPage = new CalendarPage(page);
+            calendarPage.validateCalendarHeader(expectedValue);
         })
     }
 
@@ -21,12 +26,12 @@ test.describe("login functionality check", async () => {
 
         test(`verify invalid login ${username} and ${password}`, async ({ page }) => {
             await page.goto("");
-            await page.locator("xpath=//input[@id='authUser']").fill(username);
-            await page.locator("xpath=//input[@id='clearPass']").fill(password);
-            await page.locator("xpath=//select[@name='languageChoice']").selectOption({ label: language });
-            await page.locator("xpath=//button[@id='login-button']").click();
-            // Assert the text - Invalid username or password
-            await expect(page.locator("xpath=//p[contains(text(),'Invalid')]")).toHaveText(expectedValue);
+            const loginPage = new LoginPage(page);
+            loginPage.enterUsername(username);
+            loginPage.enterPassword(password);
+            loginPage.selectLanguage(language);
+            loginPage.clickLogin();
+            loginPage.validateInvalidLoginError(expectedValue);
         })
 
     }
