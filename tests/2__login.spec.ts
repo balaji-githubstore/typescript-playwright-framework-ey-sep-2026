@@ -2,7 +2,6 @@ import { test, expect } from "@playwright/test"
 import { validLoginData, invalidLoginData } from "../utils/data-source.js"
 import { LoginPage } from "../pages/login-page.js"
 import { CalendarPage } from "../pages/calendar-page.js"
-import { log } from "node:console"
 
 test.describe("login functionality check", async () => {
 
