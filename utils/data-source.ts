@@ -1,3 +1,9 @@
+export const config = {
+    mobile: 9888889,
+    email: "demo@gmail.com"
+}
+
+
 export const validLoginData = [
     { username: "physician", password: "physician", language: "English (Indian)", expectedValue: "Calendar" },
     { username: "admin", password: "pass", language: "English (Indian)", expectedValue: "Calendar" },

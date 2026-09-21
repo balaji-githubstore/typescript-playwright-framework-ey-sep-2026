@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test"
-import { validLoginData } from "../utils/data-source.js"
+import { validLoginData,config } from "../utils/data-source.js"
 
 test.describe("check adding valid user", async () => {
 
