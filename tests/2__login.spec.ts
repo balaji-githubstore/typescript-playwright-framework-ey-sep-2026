@@ -7,7 +7,7 @@ test.describe("login functionality check", async () => {
 
     for (const { username, password, language, expectedValue } of validLoginData) {
 
-        test(`verify valid login ${username} and ${password}`, async ({ page }) => {
+        test(`verify valid login ${username} and ${password}`,{ tag: ['@smoke']}, async ({ page }) => {
             await page.goto("");
             const loginPage = new LoginPage(page);
             loginPage.enterUsername(username);
