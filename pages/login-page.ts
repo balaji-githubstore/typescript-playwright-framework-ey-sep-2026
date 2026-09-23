@@ -7,12 +7,12 @@ const PASSWORD_LOCATOR = "xpath=//input[@id='clearPass']"
 const LANGUAGE_LOCATOR = "xpath=//select[@name='languageChoice']"
 const LOGIN_LOCATOR = "xpath=//button[@id='login-button']"
 const ERROR_LOCATOR = "xpath=//p[contains(text(),'Invalid')]"
-
+const CALENDAR_HEADER_LOCATOR = "xpath=//span[text()='Calendar']"
 export class LoginPage extends PlaywrightKeywords {
 
     constructor(page: Page) {
         super(page);
-        
+
     }
 
     public async enterUsername(username: string): Promise<void> {
@@ -27,17 +27,18 @@ export class LoginPage extends PlaywrightKeywords {
 
     public async selectLanguage(languageLabel: string): Promise<void> {
         // await this._page.locator(LANGUAGE_LOCATOR).selectOption({ label: languageLabel });
-        await super.selectDropdownWithLabel(LANGUAGE_LOCATOR,languageLabel);
+        await super.selectDropdownWithLabel(LANGUAGE_LOCATOR, languageLabel);
     }
 
     public async clickLogin(): Promise<void> {
         // await this._page.locator(LOGIN_LOCATOR).click();
-       await super.clickElement(LOGIN_LOCATOR);
+           await super.clickElement(LOGIN_LOCATOR);
+        // await super.clickUntilLocatorPresent(CALENDAR_HEADER_LOCATOR,LOGIN_LOCATOR)
     }
 
     public async validateInvalidLoginError(expectedError: string): Promise<void> {
         // await expect(this._page.locator(ERROR_LOCATOR)).toHaveText(expectedError);
-        await super.assertText(ERROR_LOCATOR,expectedError);
+        await super.assertText(ERROR_LOCATOR, expectedError);
     }
 
 }
