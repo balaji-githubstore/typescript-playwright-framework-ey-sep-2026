@@ -22,4 +22,12 @@ export class PlaywrightKeywords {
     protected async assertText(locator: string, expectedText: string): Promise<void> {
         await expect(this.page.locator(locator)).toHaveText(expectedText);
     }
+
+    protected async clickUntilLocatorPresent(expectedLocator: string, clickableLocator: string): Promise<void> {
+        while (await this.page.locator(expectedLocator).count() == 0) {
+            if (await this.page.locator(clickableLocator).count() == 1) {
+                await this.page.locator(clickableLocator).click()
+            }
+        }
+    }
 }
