@@ -14,13 +14,13 @@ test.describe("login ui component check", async () => {
             .toHaveText("The most popular open-source Electronic Health Record and Medical Practice Management solution.");
     })
 
-    test("verify placeholder for username and password", { tag: ["@ui1"] }, async ({ page }) => {
+    test("verify placeholder for username and password", { tag: ["@ui"] }, async ({ page }) => {
         await page.goto("");
         await expect(page.locator("xpath=//input[@id='authUser']")).toHaveAttribute("placeholder", "Username")
         await expect(page.locator("xpath=//input[@id='clearPass']")).toHaveAttribute("placeholder", "Password")
     })
 
-    test("verify acknowledgments license link", { tag: ["@ui1"] }, async ({ page }) => {
+    test("verify acknowledgments license link", { tag: ["@ui"] }, async ({ page }) => {
         await page.goto("");
 
         // Expect element text should be.
